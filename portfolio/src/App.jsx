@@ -3,10 +3,10 @@ import {
   FadeContent,
   BlurText,
   MagnetLines,
-  Crosshair,
   Noise,
 } from '@appletosolutions/reactbits'
 import { useRef } from 'react'
+import TargetCursor from './components/custom/TargetCursor'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 
@@ -18,7 +18,6 @@ function App() {
       ref={containerRef}
       className="relative min-h-screen overflow-hidden p-6 space-y-12"
     >
-      <Crosshair color="#ff0066" containerRef={containerRef} />
       <MagnetLines
         className="pointer-events-none absolute inset-0 -z-10 opacity-30"
         rows={8}
@@ -27,6 +26,7 @@ function App() {
         containerSize="100%"
       />
       <Noise patternSize={64} patternAlpha={0.05} />
+      <TargetCursor color="#ff0066" />
       <section className="py-20 text-center space-y-8">
         <BlurText
           text="Mon Portfolio"
