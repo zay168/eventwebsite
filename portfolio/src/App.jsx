@@ -19,20 +19,13 @@ export default function App() {
       />
       <PixelCard
         variant="pink"
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="cursor-target absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className="absolute inset-0 flex items-center justify-center text-white">
           <h2 className="text-xl font-bold">Zay168 : usage</h2>
         </div>
       </PixelCard>
-      <div className="p-6 space-y-4">
-        <TargetCursor spinDuration={2} hideDefaultCursor={true} />
-        <h1 className="text-2xl font-bold">Hover over the elements below</h1>
-        <button className="cursor-target px-4 py-2 bg-blue-500 text-white rounded">
-          Click me!
-        </button>
-        <div className="cursor-target p-4 border rounded">Hover target</div>
-      </div>
+      <TargetCursor spinDuration={2} hideDefaultCursor={true} />
     </div>
   )
 }
