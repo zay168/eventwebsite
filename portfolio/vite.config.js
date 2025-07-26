@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['gsap', 'gsap/ScrollTrigger', 'gsap/SplitText']
+    include: ['gsap', 'gsap/ScrollTrigger', 'gsap/SplitText', '@appletosolutions/reactbits']
   }
 })
