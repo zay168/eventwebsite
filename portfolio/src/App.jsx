@@ -3,7 +3,7 @@ import LightRays from './components/custom/LightRays'
 
 export default function App() {
   return (
-    <div style={{ width: '100%', height: '600px', position: 'relative', backgroundColor: 'black' }}>
+   <div style={{ width: '100%', height: '100vh', position: 'relative', backgroundColor: '#000' }}>
       <LightRays
         raysOrigin="top-center"
         raysColor="#ffffff"     // blanc
