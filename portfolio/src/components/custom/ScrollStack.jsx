@@ -208,6 +208,41 @@ const ScrollStack = ({
 
     updateCardTransforms();
 
+    let lastTouchY = 0;
+
+    const handleWheelBoundary = (e) => {
+      const { deltaY } = e;
+      const { scrollTop, scrollHeight, clientHeight } = scroller;
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight;
+
+      if ((deltaY < 0 && atTop) || (deltaY > 0 && atBottom)) {
+        window.scrollBy({ top: deltaY, behavior: 'auto' });
+      }
+    };
+
+    const handleTouchStart = (e) => {
+      lastTouchY = e.touches?.[0]?.clientY || 0;
+    };
+
+    const handleTouchMove = (e) => {
+      const currentY = e.touches?.[0]?.clientY || 0;
+      const deltaY = lastTouchY - currentY;
+      lastTouchY = currentY;
+
+      const { scrollTop, scrollHeight, clientHeight } = scroller;
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight;
+
+      if ((deltaY < 0 && atTop) || (deltaY > 0 && atBottom)) {
+        window.scrollBy({ top: deltaY, behavior: 'auto' });
+      }
+    };
+
+    scroller.addEventListener('wheel', handleWheelBoundary, { passive: false, capture: true });
+    scroller.addEventListener('touchstart', handleTouchStart, { passive: true, capture: true });
+    scroller.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true });
+
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -215,6 +250,9 @@ const ScrollStack = ({
       if (lenisRef.current) {
         lenisRef.current.destroy();
       }
+      scroller.removeEventListener('wheel', handleWheelBoundary, true);
+      scroller.removeEventListener('touchstart', handleTouchStart, true);
+      scroller.removeEventListener('touchmove', handleTouchMove, true);
       stackCompletedRef.current = false;
       cardsRef.current = [];
       transformsCache.clear();
