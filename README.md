@@ -19,7 +19,7 @@
 
 ```bash
 cd portfolio
-npm install --legacy-peer-deps
+npm install
 ```
 
 ## Usage 🚀
