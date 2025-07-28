@@ -20,7 +20,7 @@ export default function App() {
       />
       <PixelCard
         variant="pink"
-        className="cursor-target absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="cursor-target fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       >
         <div className="absolute inset-0 flex items-center justify-center text-white">
           <h2 className="text-xl font-bold">Zay168 : usage</h2>
