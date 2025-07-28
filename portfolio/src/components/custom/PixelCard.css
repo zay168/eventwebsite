@@ -5,13 +5,14 @@
 }
 
 .pixel-card {
-  height: 400px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
+  max-height: 400px;
+  aspect-ratio: 4 / 5;
   position: relative;
   overflow: hidden;
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 5;
   border: 1px solid #27272a;
   border-radius: 25px;
   isolation: isolate;
